@@ -1,0 +1,18 @@
+[
+	{
+		"path" : "/upload",
+		"method" : "POST",
+		"rules" : [
+			"$ctx == 'headers' $val == /\\\\$\\\\{.*(jndi|ldap|rmi|dns):/ : block",
+			"pass"
+		]
+	},
+	{
+		"path" : "/",
+		"method":"",
+		"rules" : [
+			"block"
+		]
+	}
+]
+
