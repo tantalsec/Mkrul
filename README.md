@@ -78,7 +78,7 @@ Where:
 |------------|--------------------------------------------------------------------------|----------------------------------|
 | `$field`   | `ctx` (data type), `key` (key), `val` (value)                       | `$ctx`, `$key`                   |
 | `operator` | `==` (equals), `!=` (not equals)                                  | `==`, `!=`                       |
-| `value`    | String (`'text'`) or regex (`'/pattern/'`). For arrays, index as string. | `'admin'`, `'/^[0-9]+$/'`, `'0'` |
+| `value`    | String (`'text'`) or regex (`/pattern/`). For arrays, index as string. | `'admin'`, `/^[0-9]+$/`, `'0'` |
 
 The regex implementation follows the [YandexPIRE](https://github.com/yandex/pire) library's syntax rules. 
 
@@ -94,7 +94,7 @@ The regex implementation follows the [YandexPIRE](https://github.com/yandex/pire
    "$ctx == 'json_array' $key == '0' $val == 'root' : block"  
    
    // Regex for indices  
-   "$ctx == 'json_array' $key == '/^[1-5]$/' : block"  
+   "$ctx == 'json_array' $key == /^[1-5]$/ : block"  
    ```  
 
 3. **Escaping**:  
@@ -135,7 +135,7 @@ The regex implementation follows the [YandexPIRE](https://github.com/yandex/pire
   "path": "/",
   "method": "*",
   "rules": [
-    "$ctx == 'headers|cookie' $key == 'token' $val == '/^dev_/' : block",
+    "$ctx == 'headers|cookie' $key == 'token' $val == /^dev_/ : block",
     "$ctx == 'jwt' : $ctx == 'json' $key == 'iss' $val != 'trusted' : block",
     "pass"
   ]
