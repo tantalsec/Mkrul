@@ -45,25 +45,30 @@ go run mkrul.go -i rules.json -o rules.bin
 
 #### **3. Supported Contexts (`$ctx`)**  
 Available data types (can be combined with `|`):  
-- `headers` – HTTP headers  
-- `urlenc` – URL-encoded parameters  
-- `base64` / `base64_url` – Base64-encoded data  
-- `cookie` – Cookies  
-- `json` / `json_obj` / `json_array` – JSON data (json as supertype)
-- `path` – URL path components  
-- `http` – HTTP metadata  
-- `auth_header` – Authorization header  
-- `jwt` – JWT tokens  
+- `headers` – HTTP headers as key/value map
+- `urlenc` – URL-encoded parameters as key/value map
+- `base64` / `base64_url` – Base64-encoded data as string value 
+- `cookie` – Cookies as key/value map
+- `json` / `json_obj` / `json_array` – JSON data (json as supertype), json_obj as key/value map, json_array as array of string values
+- `path` – URL path components as array of string values
+- `http` – HTTP data as key/value map where predefined key is the part name of http packet and value is the string value view (if needed, depends on parser)
+- `auth_header` – Authorization header as key/value single map
+- `jwt` – JWT tokens as key/value map with predefined keys and typed json values (signature does not parse)
 
 Available http keys (example: GET http://somesec.com/a/b/c?d=1&e=2)
 
 - `method` – HTTP method (GET)
-- `scheme` – HTTP scheme as string (http)  
+- `scheme` – HTTP scheme (http)  
 - `uri` – URI (http://somesec.com/a/b/c?d=1&e=2)
-- `path` – path as array (a, b, c)  
-- `query` – query part as key/value (d:1 , e:2)   
-- `headers` – headers part as key/value (Content-Length: 123)  
-- `body` – body as string (some text)   
+- `path` – path (/a/b/c)  
+- `query` – query part (d=1&e=2)   
+- `headers` – headers  
+- `body` – body
+
+Available jwt keys
+
+- `header` – jwt header
+- `payload` – jwt payload 
 
 #### **4. Rule Format**  
 ```
