@@ -141,7 +141,7 @@ The regex implementation follows the [YandexPIRE](https://github.com/yandex/pire
   "method": "*",
   "rules": [
     "$ctx == 'headers|cookie' $key == 'token' $val == /^dev_/ : block",
-    "$ctx == 'jwt' : $ctx == 'json' $key == 'iss' $val != 'trusted' : block",
+    "$ctx == 'jwt' : $ctx == 'json_obj' $key == 'iss' $val != 'trusted' : block",
     "pass"
   ]
 }
@@ -154,5 +154,7 @@ The regex implementation follows the [YandexPIRE](https://github.com/yandex/pire
 4. Escape special characters with double backslashes (`\\` → `\\\\`). The JSON package in Golang unescapes strings before internal processing.
 
 This format enables flexible HTTP request filtering with support for complex conditions, including JSON, headers, JWT, and other data types.  
+
+If you have any questions, please contact us at [team@tantalsec.com](mailto:team@tantalsec.com).
 
 ---  
