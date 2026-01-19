@@ -1,6 +1,6 @@
 ### **Description**  
 
-**Mkrul** is a rule compiler for **Application Layer DPI** (content filtering) system. It transforms human-readable JSON rules into optimized binary format for [Tantal Web Filter](https://hub.docker.com/r/tantalsec/tantal-wf). The web filter is an [original library-based solution](https://hub.docker.com/r/tantalsec/tantal-wf) designed to integrate with nginx and its forks.
+**Mkrul** is a rule compiler for **Application Layer DPI** (content filtering) system. It transforms human-readable JSON rules into optimized binary format for [Tantal Web Filter](https://hub.docker.com/r/tantalsec/tantal-wf). The web filter is an [original library-based solution](https://github.com/tantalsec/libtantal) designed to integrate with nginx and its forks.
 
 ### **Usage**  
 Converts JSON web filtering rules into a binary format. Takes `endpoints.json` (default) with paths, methods, and rules, outputs optimized `sentinels.bin`.  
